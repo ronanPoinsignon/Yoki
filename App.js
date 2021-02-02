@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import React from 'react';
+import React, { useEffect, useState } from "react";
 import { Button, SafeAreaView, StyleSheet, Text, View, TouchableOpacity, ScrollView, FlatList } from 'react-native';
 import Produit from './components/Produit';
 import ProduitElement from './components/ProduitElement';
@@ -27,20 +27,16 @@ export default function App() {
   );
 
   const renderItem = ({ item }) => {
-    const backgroundColor = item[0] === selectedItem ? "blue" : "orange";
-    console.log(backgroundColor)
+    const backgroundColor = selectedItem && item[0].getNom() === selectedItem[0].getNom() ? "red" : "pink";
     return (
-      <ProduitElement key={item[0]} produit={item[0]} date={item[1]} heure={item[2]}
-      onPress={() => setSelectedItem(item[0])}
-      style={{ backgroundColor }}></ProduitElement>
+      <TouchableOpacity onPress={() => setSelectedItem(item)}
+      style={{ backgroundColor }}>
+      <ProduitElement key={item} produit={item[0]} date={item[1]} heure={item[2]}></ProduitElement>
+      </TouchableOpacity>
     );
   };
 
-  function setSelectedItem(item){
-    selectedItem = item;
-  }
-
-  let selectedItem = null;
+  const [selectedItem, setSelectedItem] = useState(null);
 
   return (
     <View style={styles.container}>
@@ -64,7 +60,6 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
     flexDirection:'column',
-    flexWrap:'wrap'
   },
   scrollView: {
     

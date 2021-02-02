@@ -19,12 +19,10 @@ export default class ProduitElement extends React.Component {
     }
     render(){
         return <View>
-            <TouchableOpacity>
                 <Text style={styles.titre}>{this.getTitre() + this.getPrix()}</Text>
                 <Text style={styles.description}>{this.getDate()}</Text>
                 <Text style={styles.description}>{this.getHeure()}</Text>
                 <View style = {styles.lineStyle} />
-            </TouchableOpacity>
         </View>
     }
 }
