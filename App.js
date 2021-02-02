@@ -4,22 +4,22 @@ import { Button, SafeAreaView, StyleSheet, Text, View, TouchableOpacity, ScrollV
 import Produit from './components/Produit';
 import ProduitElement from './components/ProduitElement';
 import Header from './components/Header';
+import CompteurImage from './components/CompteurImage';
+import Formulaire from './components/calculator/Formulaire';
+import HeaderCalculator from './components/calculator/HeaderCalculator';
 
 export default function App() {
-  const produits = [[new Produit("cassoulet", 2.50), new Date("02/01/2021"), "8h33"],
+  const produits = [[new Produit("cassoulEt", 2.50), new Date("02/01/2021"), "8h33"],
                     [new Produit("Pâtes", 0.75), new Date("01/31/2021"), "8h20"],
                     [new Produit("Raviolis", 2.33), new Date("01/31/2021"), "8h25"],
                     [new Produit("Oeufs", 2.0), new Date("01/31/2021"), "8h25"],
-                    [new Produit("Patates", 3), new Date("01/31/2021"), "8h26"],
+                    [new Produit("PatATes", 3), new Date("01/31/2021"), "8h26"],
                     [new Produit("Orange", 1.70), new Date("01/31/2021"), "8h27"],
                     [new Produit("Tomates", 1.50), new Date("01/31/2021"), "8h28"],
                     [new Produit("Emmental", 1.70), new Date("01/31/2021"), "8h29"],
                     [new Produit("Chocolat", 3.50), new Date("01/31/2021"), "8h30"],
                     [new Produit("Farine", 3), new Date("01/31/2021"), "8h30"],
                     [new Produit("Blé", 3), new Date("01/31/2021"), "8h30"]];
-  /*{produits.map((element, index) => {
-              return <ProduitElement key={index} produit={element[0]} date={element[1]} heure={element[2]}></ProduitElement>
-            })}*/
   const item = ({ item, onPress, style }) => (
     <ProduitElement key={index} produit={item[0]} date={item[1]} heure={item[2]}
     onPress={onPress}
@@ -40,19 +40,24 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <Header></Header>
-      <View style={styles.containerElements}>
+      <HeaderCalculator></HeaderCalculator>
+      {Formulaire()}
+    </View>
+  );
+}
+
+/*
+<View style={styles.containerElements}>
           <TouchableOpacity style={styles.scanButton} onPress={()=> console.log("scan")}>
               <Text>Scanner</Text>
           </TouchableOpacity>
           <FlatList style={styles.scrollView} data={produits} renderItem={renderItem} keyExtractor={item[0]} extraData={selectedItem}>
             
           </FlatList>
+          <CompteurImage pathImage="./images/dab.jpg"></CompteurImage>
+
       </View>
-      
-    </View>
-  );
-}
+*/
  
 const styles = StyleSheet.create({
   generaleView:{justifyContent:"center"},

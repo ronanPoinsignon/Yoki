@@ -1,11 +1,12 @@
-import React, { Component } from 'react';
+import React, { useEffect, useState } from "react";
 import { TouchableOpacity, Image, StyleSheet, View, Text} from 'react-native';
 
-export default class CompteurImage extends Component {
+export default class CompteurImage extends React.Component {
     constructor(props) {
         super(props);
-        console.log(props);
-        this.state = {cpt:0};
+        this.state = {
+          cpt: 0
+      };
     }
     getImage(){
         return this.props.pathImage;
@@ -13,15 +14,11 @@ export default class CompteurImage extends Component {
     logHello(){
         console.log("bonjour");
     }
-    add(){
-      this.state.cpt++;
-    }
     render(){
         return <TouchableOpacity 
-          onPress={() => this.add()}
-        >
+          onPress={() => this.setState({cpt:this.state.cpt + 1})}>
           <View>
-            <Image source={this.getImage()} style={styles.image}/>
+            <Image source={this.getImage()} style={styles.image} />
             <Text style={styles.text}>Compteur : {this.state.cpt}</Text>
           </View>
         </TouchableOpacity>;

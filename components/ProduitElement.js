@@ -1,12 +1,19 @@
 import { View, StyleSheet, Text, TouchableOpacity } from "react-native";
-import React from 'react';
+import React, { Profiler } from 'react';
 
 export default class ProduitElement extends React.Component {
     constructor(props){
         super(props);
     }
     getTitre(){
-        return this.props.produit ? this.props.produit.getNom() : "";
+        let prod = this.props.produit;
+        if(prod){
+            let nom = prod.getNom();
+            nom = nom ? nom : "";
+            nom = nom.toLowerCase();
+            return nom[0].toUpperCase() + nom.substring(1);
+        }
+        return "";
     }
     getDate(){
         return this.props.date.getDate() ? "Acheté le " + this.props.date.toLocaleDateString() : "";

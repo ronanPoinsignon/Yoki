@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { useEffect, useState } from "react";
 import {SafeAreaView, StyleSheet, Text} from 'react-native';
 
-export default class Header extends React.Component {
+export default class HeaderCalculator extends React.Component {
     render(){
         return <SafeAreaView style={styles.header}>
-            <Text style={styles.headerText}>Yoki</Text>
+            <Text style={styles.headerText}>IMC Calculator</Text>
         </SafeAreaView>
     }
 }
